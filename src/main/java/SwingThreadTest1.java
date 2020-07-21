@@ -28,11 +28,11 @@ public class SwingThreadTest1 extends JFrame {
     private void go() {
         while (count < 100) {
             try {
-                Thread.sleep(100); //这里比作要完成的某个耗时的工作
+                Thread.sleep(100);  // cost lots of time
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            //更新进度条和输入框
+            // update progress bar
             if (flag) {
                 count++;
                 progressBar.setValue(count);
@@ -42,15 +42,15 @@ public class SwingThreadTest1 extends JFrame {
     }
     private class Start implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            flag = true;//设置开始更新的标志
+            flag = true;
             System.out.println("Blocking");
-            go();//开始工作
+            go();
         }
     }
     private class End implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             System.out.println("End");
-            flag = false;//停止
+            flag = false;
         }
     }
     public static void main(String[] args) {

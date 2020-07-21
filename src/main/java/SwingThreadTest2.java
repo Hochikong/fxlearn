@@ -50,7 +50,7 @@ public class SwingThreadTest2 extends JFrame {
             }
         }
     }
-    //执行复杂工作，然后更新组件的线程
+
     class GoThread extends Thread{
         public void run() {
             //do something...

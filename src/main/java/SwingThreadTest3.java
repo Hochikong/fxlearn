@@ -18,7 +18,7 @@ public class SwingThreadTest3 extends JFrame {
 
     private GoThread t = null;
 
-    private Runnable run = null;//更新组件的线程
+    private Runnable run = null;
     public SwingThreadTest3() {
         this.setLayout(new FlowLayout());
         add(progressBar);
@@ -29,7 +29,7 @@ public class SwingThreadTest3 extends JFrame {
         start.addActionListener(new Start());
         end.addActionListener(new End());
 
-        run = new Runnable(){//实例化更新组件的线程
+        run = new Runnable() {
             public void run() {
                 progressBar.setValue(count);
                 text.setText(STR + String.valueOf(count) + "%");
@@ -45,7 +45,7 @@ public class SwingThreadTest3 extends JFrame {
             }
             if (flag) {
                 count++;
-                SwingUtilities.invokeLater(run);//将对象排到事件派发线程的队列中
+                SwingUtilities.invokeLater(run);
             }
         }
     }
