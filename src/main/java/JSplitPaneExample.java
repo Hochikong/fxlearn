@@ -1,5 +1,4 @@
-import java.awt.FlowLayout;
-import java.awt.Panel;
+import java.awt.*;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JSplitPane;
