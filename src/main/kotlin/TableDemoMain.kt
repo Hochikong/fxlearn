@@ -2,6 +2,7 @@ import java.awt.event.MouseEvent
 
 class MainFrameTDM(data: Array<Array<String>>) : TableDemo(data) {
     override fun MainTableMouseClicked(evt: MouseEvent?) {
+        println(MainTable.selectedRow)
         println("Data you selected is ${MainTable.getValueAt(MainTable.selectedRow, MainTable.selectedColumn)}")
     }
 }

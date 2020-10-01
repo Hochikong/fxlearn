@@ -1,10 +1,11 @@
 import bibliothek.gui.dock.common.CControl
-import java.awt.Color
-import java.awt.GridLayout
-import javax.swing.JFrame
 import bibliothek.gui.dock.common.CLocation
 import bibliothek.gui.dock.common.DefaultSingleCDockable
 import bibliothek.gui.dock.common.SingleCDockable
+import com.formdev.flatlaf.intellijthemes.FlatSolarizedLightIJTheme
+import java.awt.Color
+import java.awt.GridLayout
+import javax.swing.JFrame
 import javax.swing.JPanel
 
 fun create(title: String, color: Color): SingleCDockable {
@@ -16,6 +17,7 @@ fun create(title: String, color: Color): SingleCDockable {
 }
 
 fun genGUI() {
+    FlatSolarizedLightIJTheme.install()
     val frame = JFrame().apply { defaultCloseOperation = JFrame.EXIT_ON_CLOSE }
     val control = CControl(frame)
     frame.layout = GridLayout(1, 1)
