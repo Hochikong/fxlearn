@@ -30,9 +30,13 @@ fun getPanel(tabbedPane: JTabbedPane, panel: JPanel, title: String, colorenter: 
         border = BorderFactory.createEmptyBorder(0, 0, 0, 5)
     }
     titlePanel.add(titleL)
-    val closebtn = JButton("\uD83D\uDDD9").apply {
+    val closebtn = JButton().apply {
+        icon = ImageIcon(this.javaClass::class.java.getResource("/search close.png"))
         background = colorexit
-        border = BorderFactory.createEmptyBorder(2, 2, 2, 2)
+        border = BorderFactory.createEmptyBorder(0, 0, 0, 0)
+
+        isFocusPainted = false
+        isBorderPainted = false
     }
 
     closebtn.addMouseListener(object : MouseAdapter() {
@@ -42,10 +46,12 @@ fun getPanel(tabbedPane: JTabbedPane, panel: JPanel, title: String, colorenter: 
 
         override fun mouseEntered(e: MouseEvent?) {
             closebtn.background = colorenter
+            closebtn.isBorderPainted = true
         }
 
         override fun mouseExited(e: MouseEvent?) {
             closebtn.background = colorexit
+            closebtn.isBorderPainted = false
         }
     })
 
@@ -62,29 +68,42 @@ private fun useStyle(styleName: String): String {
             }
         }
     }
+    if (styleName == "Metal") {
+        for (info in UIManager.getInstalledLookAndFeels()) {
+            if ("Metal" == info.name) {
+                UIManager.setLookAndFeel(info.className)
+                break
+            }
+        }
+    }
     if (styleName == "Darcula") {
         FlatDarculaLaf.install()
     }
+
     return styleName
 }
 
 fun main() {
     val backgroundExitDarcula = Color(60, 63, 65)
-    val backgroundEnterDarcula = Color(78, 82, 84)
-    val backgroundExitNimbus = Color(244, 245, 247)
-    val backgroundEnterNimbus = Color(167, 188, 207)
+    val backgroundExit = Color(74, 136, 199)
+    val backgroundEnter = Color(167, 188, 207)
+    val backgroundExitNimbus = Color(167, 188, 207)
+    val backgroundExitMetal = Color(238, 238, 238)
     val style = "Darcula"
     val main: MainFrame
     useStyle(style)
     when (style) {
         "Nimbus" -> {
-            main = MainFrame(backgroundEnterNimbus, backgroundExitNimbus)
+            main = MainFrame(backgroundEnter, backgroundExitNimbus)
         }
         "Darcula" -> {
-            main = MainFrame(backgroundEnterDarcula, backgroundExitDarcula)
+            main = MainFrame(backgroundEnter, backgroundExitDarcula)
+        }
+        "Metal" -> {
+            main = MainFrame(backgroundEnter, backgroundExitMetal)
         }
         else -> {
-            main = MainFrame(backgroundEnterDarcula, backgroundExitDarcula)
+            main = MainFrame(backgroundEnter, backgroundExit)
         }
     }
     main.initComponents()
