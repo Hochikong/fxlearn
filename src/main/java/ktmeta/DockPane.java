@@ -1,16 +1,13 @@
 package ktmeta;
 
-import java.awt.Color;
-
-import javax.swing.JFrame;
-import javax.swing.JMenuBar;
-import javax.swing.JPanel;
-
 import bibliothek.gui.dock.common.*;
 import bibliothek.gui.dock.common.menu.SingleCDockableListMenuPiece;
 import bibliothek.gui.dock.facile.menu.RootMenuPiece;
 
-public class Example {
+import javax.swing.*;
+import java.awt.*;
+
+public class DockPane {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Demo");
         CControl control = new CControl(frame);

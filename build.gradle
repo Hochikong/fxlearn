@@ -19,6 +19,7 @@ dependencies {
     implementation files("libs/docking-frames-core.jar")
     implementation files("libs/docking-frames-common.jar")
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation 'org.greenrobot:eventbus:3.2.0'
     implementation "com.formdev:flatlaf:0.41"
     implementation "com.formdev:flatlaf-intellij-themes:0.41"
     implementation "commons-io:commons-io:2.8.0"
