@@ -1,6 +1,6 @@
-package EditorDemo
+package editorDemoByEventBus
 
-import ktmeta.EditorDemoJava.KtTextEditorTips
+import ktmeta.editorDemoJava.KtTextEditorTips
 import org.greenrobot.eventbus.EventBus
 import java.awt.event.KeyEvent
 import javax.swing.AbstractListModel
@@ -21,14 +21,21 @@ class EditorTips(val data: Array<String>) : KtTextEditorTips() {
     override fun KtjList1KeyReleased(evt: KeyEvent?) {
         if (evt?.keyCode == KeyEvent.VK_ENTER) {
             print("Hit enter")
-            if (!jList1.isSelectionEmpty) EventBus.getDefault().post(FocusMsg(jList1.selectedValue))
+            if (!jList1.isSelectionEmpty) EventBus.getDefault().post(FocusMsg(id, jList1.selectedValue))
+            this.id = ""
             print(selectValue)
+            this.isVisible = false
         }
     }
 
     fun focus() {
         jList1.requestFocus()
     }
+
+    private var id: String = ""
+    fun setID(id: String) {
+        this.id = id
+    }
 }
 
-class FocusMsg(val message: String)
+class FocusMsg(val id: String, val message: String)

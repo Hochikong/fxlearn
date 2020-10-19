@@ -1,6 +1,6 @@
-package EditorDemo
+package editorDemoByEventBus
 
-import ktmeta.EditorDemoJava.KtTextEditorDemo
+import ktmeta.editorDemoJava.KtTextEditorDemo
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
