@@ -29,6 +29,7 @@ import java.awt.event.FocusEvent;
 
 public class MainFrame extends BrowserFrame {
     private static final long serialVersionUID = -2295538706810864538L;
+
     public static void main(String[] args) {
         // Perform startup initialization on platforms that require it.
         if (!CefApp.startup(args)) {
@@ -71,7 +72,7 @@ public class MainFrame extends BrowserFrame {
     private boolean transparent_painting_enabled_;
 
     public MainFrame(boolean osrEnabled, boolean transparentPaintingEnabled,
-            boolean createImmediately, String[] args) {
+                     boolean createImmediately, String[] args) {
         this.osr_enabled_ = osrEnabled;
         this.transparent_painting_enabled_ = transparentPaintingEnabled;
 
@@ -138,10 +139,12 @@ public class MainFrame extends BrowserFrame {
             public void onAddressChange(CefBrowser browser, CefFrame frame, String url) {
                 control_pane_.setAddress(browser, url);
             }
+
             @Override
             public void onTitleChange(CefBrowser browser, String title) {
                 setTitle(title);
             }
+
             @Override
             public void onStatusMessage(CefBrowser browser, String value) {
                 status_panel_.setStatusText(value);
@@ -157,7 +160,7 @@ public class MainFrame extends BrowserFrame {
         client_.addLoadHandler(new CefLoadHandlerAdapter() {
             @Override
             public void onLoadingStateChange(CefBrowser browser, boolean isLoading,
-                    boolean canGoBack, boolean canGoForward) {
+                                             boolean canGoBack, boolean canGoForward) {
                 control_pane_.update(browser, isLoading, canGoBack, canGoForward);
                 status_panel_.setIsInProgress(isLoading);
 
@@ -169,7 +172,7 @@ public class MainFrame extends BrowserFrame {
 
             @Override
             public void onLoadError(CefBrowser browser, CefFrame frame, ErrorCode errorCode,
-                    String errorText, String failedUrl) {
+                                    String errorText, String failedUrl) {
                 if (errorCode != ErrorCode.ERR_NONE && errorCode != ErrorCode.ERR_ABORTED) {
                     errorMsg_ = "<html><head>";
                     errorMsg_ += "<title>Error while loading</title>";

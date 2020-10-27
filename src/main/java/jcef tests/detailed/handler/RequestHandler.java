@@ -34,7 +34,7 @@ public class RequestHandler extends CefResourceRequestHandlerAdapter implements 
 
     @Override
     public boolean onBeforeBrowse(CefBrowser browser, CefFrame frame, CefRequest request,
-            boolean user_gesture, boolean is_redirect) {
+                                  boolean user_gesture, boolean is_redirect) {
         CefPostData postData = request.getPostData();
         if (postData != null) {
             Vector<CefPostDataElement> elements = new Vector<CefPostDataElement>();
@@ -64,8 +64,8 @@ public class RequestHandler extends CefResourceRequestHandlerAdapter implements 
 
     @Override
     public CefResourceRequestHandler getResourceRequestHandler(CefBrowser browser, CefFrame frame,
-            CefRequest request, boolean isNavigation, boolean isDownload, String requestInitiator,
-            BoolRef disableDefaultHandling) {
+                                                               CefRequest request, boolean isNavigation, boolean isDownload, String requestInitiator,
+                                                               BoolRef disableDefaultHandling) {
         return this;
     }
 
@@ -139,7 +139,7 @@ public class RequestHandler extends CefResourceRequestHandlerAdapter implements 
 
     @Override
     public boolean getAuthCredentials(CefBrowser browser, String origin_url, boolean isProxy,
-            String host, int port, String realm, String scheme, CefAuthCallback callback) {
+                                      String host, int port, String realm, String scheme, CefAuthCallback callback) {
         SwingUtilities.invokeLater(new PasswordDialog(owner_, callback));
         return true;
     }
@@ -152,7 +152,7 @@ public class RequestHandler extends CefResourceRequestHandlerAdapter implements 
 
     @Override
     public boolean onCertificateError(CefBrowser browser, ErrorCode cert_error, String request_url,
-            CefRequestCallback callback) {
+                                      CefRequestCallback callback) {
         SwingUtilities.invokeLater(new CertErrorDialog(owner_, cert_error, request_url, callback));
         return true;
     }

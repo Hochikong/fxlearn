@@ -61,7 +61,7 @@ public class WebPluginManagerDialog extends JDialog {
 
         public PluginTableModel() {
             super();
-            columnNames = new String[] {"Name", "Path", "Version", "Description", ""};
+            columnNames = new String[]{"Name", "Path", "Version", "Description", ""};
         }
 
         // add an entry to the table

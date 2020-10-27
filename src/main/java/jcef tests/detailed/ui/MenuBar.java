@@ -57,7 +57,7 @@ public class MenuBar extends JMenuBar {
     private boolean reparentPending_ = false;
 
     public MenuBar(MainFrame owner, CefBrowser browser, ControlPanel control_pane,
-            DownloadDialog downloadDialog, CefCookieManager cookieManager) {
+                   DownloadDialog downloadDialog, CefCookieManager cookieManager) {
         owner_ = owner;
         browser_ = browser;
         control_pane_ = control_pane;

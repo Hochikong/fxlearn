@@ -23,10 +23,10 @@ import java.awt.event.*;
  * It displays a JFrame with a JTextField at its top and a CefBrowser in its
  * center. The JTextField is used to enter and assign an URL to the browser UI.
  * No additional handlers or callbacks are used in this example.
- *
+ * <p>
  * The number of used JCEF classes is reduced (nearly) to its minimum and should
  * assist you to get familiar with JCEF.
- *
+ * <p>
  * For a more feature complete example have also a look onto the example code
  * within the package "tests.detailed".
  */

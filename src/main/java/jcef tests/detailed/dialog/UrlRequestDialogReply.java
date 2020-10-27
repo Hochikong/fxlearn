@@ -170,7 +170,7 @@ public class UrlRequestDialogReply extends JDialog implements CefURLRequestClien
 
     @Override
     public boolean getAuthCredentials(boolean isProxy, String host, int port, String realm,
-            String scheme, CefAuthCallback callback) {
+                                      String scheme, CefAuthCallback callback) {
         SwingUtilities.invokeLater(new PasswordDialog(owner_, callback));
         return true;
     }

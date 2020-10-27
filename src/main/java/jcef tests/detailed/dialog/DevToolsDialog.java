@@ -14,6 +14,7 @@ import java.awt.event.ComponentEvent;
 @SuppressWarnings("serial")
 public class DevToolsDialog extends JDialog {
     private final CefBrowser devTools_;
+
     public DevToolsDialog(Frame owner, String title, CefBrowser browser) {
         this(owner, title, browser, null);
     }

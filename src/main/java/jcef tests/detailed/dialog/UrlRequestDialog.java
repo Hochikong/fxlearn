@@ -299,9 +299,9 @@ public class UrlRequestDialog extends JDialog {
             super();
             hasKeyColumn_ = hasKeyColumn;
             if (hasKeyColumn)
-                columnNames = new String[] {"Key", "Value", ""};
+                columnNames = new String[]{"Key", "Value", ""};
             else
-                columnNames = new String[] {"Value", ""};
+                columnNames = new String[]{"Value", ""};
         }
 
         public void newDefaultEntry() {

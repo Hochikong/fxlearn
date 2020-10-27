@@ -65,7 +65,7 @@ public class ContextMenuHandler implements CefContextMenuHandler {
 
     @Override
     public boolean onContextMenuCommand(CefBrowser browser, CefFrame frame,
-            CefContextMenuParams params, int commandId, int eventFlags) {
+                                        CefContextMenuParams params, int commandId, int eventFlags) {
         switch (commandId) {
             case MenuId.MENU_ID_VIEW_SOURCE:
                 ShowTextDialog visitor =

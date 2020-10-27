@@ -81,7 +81,7 @@ public class CookieManagerDialog extends JDialog {
 
         public CookieTableModel() {
             super();
-            columnNames = new String[] {"Name", "Value", "Domain", "Path", "Secure", "HTTP only",
+            columnNames = new String[]{"Name", "Value", "Domain", "Path", "Secure", "HTTP only",
                     "Created", "Last Access", "Expires"};
         }
 
