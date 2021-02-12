@@ -1,23 +1,18 @@
 package editorDemoByEventBus
 
+import com.google.common.eventbus.EventBus
+import com.google.common.eventbus.Subscribe
 import ktmeta.editorDemoJava.KTTextEditorDemo2
-import org.greenrobot.eventbus.EventBus
-import org.greenrobot.eventbus.Subscribe
-import org.greenrobot.eventbus.ThreadMode
 import java.awt.Dimension
 import javax.swing.event.CaretEvent
 
-class EditorDemo2 : KTTextEditorDemo2() {
-    init {
-        EventBus.getDefault().register(this)
-    }
-
+class EditorDemoGuava(private val eb: EventBus) : KTTextEditorDemo2() {
 
     override fun jTextArea1CaretUpdate(evt: CaretEvent?) {
         if (jTextArea1.text.isNotEmpty()) {
             val rectangle = jTextArea1.modelToView(jTextArea1.caretPosition)
             rectangle.y += 15
-            val tips = EditorTips(arrayOf("ABC"))
+            val tips = EditorTipsGuava(arrayOf("ABC"), eb)
             tips.bounds = rectangle
             tips.size = Dimension(200, 100)
             jTextArea1.add(tips)
@@ -30,7 +25,7 @@ class EditorDemo2 : KTTextEditorDemo2() {
         if (jTextArea2.text.isNotEmpty()) {
             val rectangle = jTextArea2.modelToView(jTextArea2.caretPosition)
             rectangle.y += 15
-            val tips = EditorTips(arrayOf("CDE"))
+            val tips = EditorTipsGuava(arrayOf("CDE"), eb)
             tips.bounds = rectangle
             tips.size = Dimension(200, 100)
             jTextArea2.add(tips)
@@ -39,7 +34,7 @@ class EditorDemo2 : KTTextEditorDemo2() {
         }
     }
 
-    @Subscribe(threadMode = ThreadMode.BACKGROUND)
+    @Subscribe
     fun onEventReceive(msg: FocusMsg) {
         if (msg.id == "left") {
             jTextArea1.text = msg.message
@@ -53,6 +48,8 @@ class EditorDemo2 : KTTextEditorDemo2() {
 }
 
 fun main() {
-    val m = EditorDemo2()
+    val eventBus = EventBus()
+    val m = EditorDemoGuava(eventBus)
+    eventBus.register(m)
     m.isVisible = true
 }
